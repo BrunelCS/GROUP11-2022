@@ -3,6 +3,9 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
+import AboutUs from "./components/pages/About-us";
+import Charaties from "./components/pages/Charity-OFM";
+import MyAccount from "./components/pages/My-Account";
 function App() {
   return (
     <>
@@ -10,6 +13,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/About-us" element={<AboutUs />} />
+          <Route path="/Charity-OFM" element={<Charaties />} />
+          <Route path="/My-Account" element={<MyAccount />} />
         </Routes>
       </Router>
     </>
