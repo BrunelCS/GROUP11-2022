@@ -6,6 +6,7 @@ import Home from "./components/pages/Home";
 import AboutUs from "./components/pages/About-us";
 import Charaties from "./components/pages/Charity-OFM";
 import MyAccount from "./components/pages/My-Account";
+import Contactus from "./components/pages/Contact-us";
 function App() {
   return (
     <>
@@ -13,7 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Home" element={<Home />} />
+          <Route path="/Contact-us" element={<Contactus />} />
           <Route path="/About-us" element={<AboutUs />} />
           <Route path="/Charity-OFM" element={<Charaties />} />
           <Route path="/My-Account" element={<MyAccount />} />
