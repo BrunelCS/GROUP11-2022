@@ -1,0 +1,133 @@
+.centerText {
+    position: absolute;
+    top: 19%;
+    left: 45%;
+    transform: translate(-20%, -50%);
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 4.5vw;
+    color: #4C7972;
+}
+
+#topImg {
+    border-radius: 5px 5px 5px 5px;
+    height: 500px;
+    width: 100%;
+}
+
+.containerTop {
+    background-color: #CFB79F;
+}
+
+.containerContent {
+    font-family: Annie Use Your Telescope;
+    color: #915A3C;
+    text-align: center;
+    font-weight: bold;
+}
+
+.contBodyLeft {
+    background-color: #4C7972;
+    width: 50%;
+    height: auto;
+    float: left;
+}
+
+.contBodyRight {
+    background-color: #4C7972;
+    width: 49%;
+    height: auto;
+    float: right;
+}
+
+.card {
+    background-color: white;
+    float: left;
+    margin: 15px;
+    width: 20%;
+    height: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: auto;
+}
+
+.descriptionCard {
+    background-color: #915A3C;
+    width: 80%;
+    height: fit-content;
+    margin: 10%;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#date {
+    text-align: center;
+    font-family: monospace;
+    font-size: 400%;
+    transform: translateY(-25px);
+}
+
+#month {
+    text-align: center;
+    transform: translateY(-50px);
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+#calendar {
+    background-color: #915A3C;
+    border: none;
+    width: 100%;
+    height: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 200%;
+    padding: 20%;
+    cursor: pointer;
+}
+
+#calendar:hover {
+    background-color: white;
+}
+
+#calendar:active {
+    background-color: sienna;
+    box-shadow: 0 5px #666;
+}
+
+#discoverDescript {
+    background-color: #CFB79F;
+    border: none;
+    width: 80%;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 150%;
+    margin: 25px;
+    content: "";
+}
+
+#discoverDescript:hover {
+    color: #4C7972;
+    font-size: 175%;
+    transition: 0.3s;
+}
