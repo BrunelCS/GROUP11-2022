@@ -1,0 +1,191 @@
+.s1 .row {
+  padding: 30px 0;
+}
+
+body {
+  font-family: MindMeridian-Display, sans-serif;
+  background-color: #DEFCF9;
+}
+nav {
+  background-color: #362FD9;
+  padding: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  
+  
+}
+nav a {
+  display:block;
+  padding: 14px 20px;
+  text-align: center;
+  text-decoration: none;
+  color:white;
+ 
+
+
+  
+}
+.but{
+  border-radius: 30px;
+  background-color:#85CDFD;
+  margin-left: 75%;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-top: 20px;
+  color: #1300c1;
+  font-weight: bolder;
+
+
+  
+  
+  
+}
+.sea{
+  color:grey;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+}
+
+/* Change the color on hover */
+nav a:hover {
+  background-color:#3C84AB;
+  color: white;
+  border-radius: 30px;
+  
+}
+
+
+
+h1 {
+  font-size: 45px;
+  font-weight: 700;
+  color: #1300c1;
+}
+
+.s1 p {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 30px;
+  color: #666666;
+  padding-top: 15px;
+}
+
+p b {
+  color: #1300c1;
+  font-weight: 700;
+}
+
+.s2 a {
+  font-weight: 700;
+  color: #1300c1;
+  font-size: 30px;
+}
+
+.s2 .row {
+  padding: 30px 0;
+}
+
+.s2 a:hover {
+  color: black;
+  transition: all 0.5s;
+}
+
+.s3 .s3c1 {
+  background-color: #e60067;
+}
+
+.s3 .s3c2 {
+  background-color: #ffcdd9;
+}
+
+.s3 .s3c3 {
+  background-color: #1300c1;
+}
+
+.s3 .row {
+  padding: 30px 0;
+}
+
+.s3 .col-4 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+  margin: 0 10px;
+  width: 31%;
+}
+
+.s3 .col-4:hover {
+  filter: invert();
+  transition: all 0.5s;
+}
+.s3 a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.s3 img {
+  padding-top: 20px;
+}
+
+.s3c2 a {
+  color: #1300c1;
+}
+
+.s3 h3 {
+  font-weight: 700;
+  color: #1300c1;
+  font-size: 30px;
+  padding: 0;
+  padding-bottom: 20px;
+}
+.logo{
+  
+  display: inline-block;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+.but1{
+  margin-left: 30%;
+  border-radius: 30px;
+  background-color:#85CDFD;
+  color: #1300c1;
+  font-weight: bolder;
+}
+.but2{
+  margin-left: 5%;
+  border-radius: 30px;
+  background-color:#85CDFD;
+  color: #1300c1;
+  font-weight: bolder;
+}
+.but3{
+  margin-left: 5%;
+  border-radius: 30px;
+  background-color:#85CDFD;
+  color: #1300c1;
+  font-weight: bolder;
+}
+.sea1{
+  margin-left: 25%;
+  width: 50%;
+  height: 30px;
+}
+.L1{
+  font-weight: 700;
+  color:black;
+  font-size: 30px;
+  margin-left: 30%;
+  display: block;
+}
