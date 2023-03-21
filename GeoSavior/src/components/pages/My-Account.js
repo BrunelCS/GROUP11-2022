@@ -5,6 +5,6 @@ import Register from "./Login Stuff/Register"
 
 export default function MyAccount() {
   return <div><Register/>
-       <Login/>
+       
   </div>;
 }
