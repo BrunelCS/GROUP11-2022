@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./register.css";
+//import "./register.css";
 import FormInput from "./components/FormInput";
 import { Link } from "react-router-dom";
 
@@ -102,7 +102,7 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <h1>Register</h1>
         <p>Already got an account</p>
-        <Link to = "/login">
+        <Link to = "/Login">
         <button className= "LoginBtn">Login</button>
         </Link>
         {inputs.map((input) => (
