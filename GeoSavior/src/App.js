@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Contact-us" element={<Contactus />} />
+          <Route path="/Contact-us/admin" element={<Contactus isAdmin={true}/>} />
           <Route path="/About-us" element={<AboutUs />} />
           <Route path="/Charity-OFM" element={<Charaties />} />
           <Route path="/My-Account" element={<MyAccount />} />
