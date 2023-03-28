@@ -1,123 +1,100 @@
-import { useState } from "react";
-//import "./register.css";
-import FormInput from "./components/FormInput";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Axios from 'axios';
+import './register.scss';
+//import validation from './Validation';
 
-const Register = () => {
-   const [values,setValues] = useState({
-    username:"",
-    firstName:"",
-    surname:"",
-    email:"",
-    birthday:"",
-    password:"",
-    confirmPassword:"",
-   }) 
+function Register() {
 
-   const inputs = [
-    {
-      id:1,
-      name:"username",
-      type:"text",
-      placeholder:"Username",
-      errorMessage:"Username should be 3-16 characters and shouldn't include any special character!",
-      label:"Username",
-      pattern: "^[A-Za-z0-9]{3,16}",
-      required: true,
-    },    
-    {
-      id:2,
-      name:"firstName",
-      type:"text",
-      placeholder:"First name",
-      errorMessage:"Please enter your first name",
-      label:"First name",
-      pattern: "^[A-Za-z]{2,30}",
-      required: true,
-    },    
-    {
-      id:3,
-      name:"surname",
-      type:"text",
-      placeholder:"Surname",
-      errorMessage:"Please enter your first name",
-      label:"Surname",
-      pattern: "^[A-Za-z]{2,30}",
-      required: true,
-    },    
-    {
-      id:4,
-      name:"email",
-      type:"email",
-      placeholder:"Email",
-      errorMessage:"It should be a valid email address!",
-      label:"Email",
-      required: true,
-    },
-    {
-      id:5,
-      name:"birthday",
-      type:"date",
-      placeholder:"Birthday",
-      label:"Birthday",
-    },  
-    {
-      id:6,
-      name:"password",
-      type:"password",
-      placeholder:"Password",
-      errorMessage:"Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
-      label:"Password",
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-      required: true,
-    },
-    {
-      id:7,
-      name:"confirmPassword",
-      type:"password",
-      placeholder:"Confirm Password",
-      errorMessage:"Passwords don't match!",
-      label:"Confirm Password",
-      pattern: values.password,
-      required: true,
-    }
-   ]
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
+        /*const [values,setValues] =useState({
+            nickname: "",
+            email:"",
+            firstName:"",
+            lastName:"",
+            password:"", 
+            })
 
-    };
+            const [errors,setError] = useState({})
+
+           function handleChange(e) {
+            setValues({...values, [e.target.nickname] : e.target.value})
+           }
+           
+           function handleSubmit(e) {
+            e.preventDefault();
+            setError(validation(values));
+           }*/
+    const [nicknameReg,setNicknameReg] = useState("")
+    const [emailReg,setEmailReg] = useState("")  
+    const [firstNameReg,setFirstNameReg] = useState("")
+    const [lastNameReg,setLastNameReg] = useState("")
+    const [passwordReg,setPasswordReg] = useState("")
+
+    const addUser = () => {
+      Axios.post('http://localhost:3002/create', {
+        nickname: nicknameReg,
+        email: emailReg,
+        firstName: firstNameReg,
+        lastName:lastNameReg,
+        password: passwordReg,
 
 
-    const onChange = (e)=>{
-      setValues({...values, [e.target.name]: e.target.value });
-    };
+      }).then(()=>  {
+        console.log("success");
+      });
 
-
-
-  console.log(values);  
-  return (
-    <div className="box">
-    <div className="app">
-      <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
-        <p>Already got an account</p>
-        <Link to = "/Login">
-        <button className= "LoginBtn">Login</button>
-        </Link>
-        {inputs.map((input) => (
-          <FormInput 
-          key={input.id} 
-          {...input} 
-          value = {values[input.name]} 
-          onChange={onChange}
-          />
-        ))}
-        <button>Submit</button>
-      </form>
-    </div>
-    </div>
-  );
+    }; 
+    
+    return (  
+          <div className='register'>
+            <div className='card'> 
+                <div className='left'>
+                    <h1>GeoSaviour</h1>
+                    <p>
+                        This is a new website just being constructed so that i can 
+                        visualise connecting database to the page because i need  
+                        to write moore stuff to fill up the space.
+                    </p>
+                    <span>Already got an account</span>
+                    <Link to="/login">
+                    <button>Login</button>
+                    </Link>
+                    
+                </div>
+                <div className='right'>
+                <h1>Register</h1>
+                <form >
+                   <input type="text" placeholder='Nickname' //value={values.nickname}
+                    name='nickname' onChange={(event) =>{
+                     setNicknameReg(event.target.value); /*{handleChange}
+                     {errors.nickname && <p style={{color: "red", fontSize: "13px"}}>{errors.nickname}</p>}*/
+                   }} /> 
+                   <input type="email" placeholder='Email' //value= {values.email}
+                    name='email'  onChange={(event) =>{
+                     setEmailReg(event.target.value); /*{handleChange}
+                     {errors.email && <p style={{color: "red", fontSize: "13px"}}>{errors.email}</p>}*/
+                   }} />
+                   <input type="text" placeholder='First name' //value= {values.firstName}
+                    name='firstName'  onChange={(event) =>{
+                     setFirstNameReg(event.target.value);/*{handleChange}
+                     {errors.firstName && <p style={{color: "red", fontSize: "13px"}}>{errors.firstName}</p>}*/
+                   }}/>
+                   <input type="text" placeholder='Last name' //value= {values.lastName} 
+                   name='lastName'  onChange={(event) =>{
+                     setLastNameReg(event.target.value);/*{handleChange}
+                     {errors.lastName && <p style={{color: "red", fontSize: "13px"}}>{errors.lastName}</p>}*/
+                   }}/>
+                   <input type="password" placeholder='password'// value= {values.password} 
+                   name='password'  onChange={(event) =>{
+                     setPasswordReg(event.target.value);/*{handleChange}
+                     {errors.password && <p style={{color: "red", fontSize: "13px"}}>{errors.password}</p>}*/
+                   }}/>
+                   
+                   <button onClick={addUser}>Register</button>
+                </form>
+                </div>
+            </div>
+          </div>
+    );
 };
-
 export default Register;

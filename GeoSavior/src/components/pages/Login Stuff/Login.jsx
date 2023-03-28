@@ -1,71 +1,55 @@
-import { useState } from "react";
 import { Link } from 'react-router-dom';
-import FormValue from "./components2/FormValue";
+import { useState } from 'react';
+import Axios from 'axios';
+import './login.scss'
+function Login(){
 
-const Login = () => {
-   const [values,setValues] = useState({
-    username:"",
-    password:"",
-   }) 
+    const [nickname,setNickname] = useState("")
+    const [password,setPassword] = useState("")  
 
-   const inputs = [
-    {
-      id:1,
-      name:"username",
-      type:"text",
-      placeholder:"Username",
-      errorMessage:"Username should be 3-16 characters and shouldn't include any special character!",
-      label:"Username",
-      pattern: "^[A-Za-z0-9]{3,16}",
-      required: true,
-    },    
-    {
-      id:2,
-      name:"password",
-      type:"password",
-      placeholder:"Password",
-      errorMessage:"Please enter correct password",
-      label:"Password",
-      pattern: "^[A-Za-z]{2,30}",
-      required: true,
-    },    
-   ]
+ 
+   
+    const login = () => {
+        Axios.post('http://localhost:3002/login', {
+          nickname: nickname,
+          password: password,
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    };
-
-
-    const onChange = (e)=>{
-      setValues({...values, [e.target.name]: e.target.value });
-    };
-
-
-
-  console.log(values);  
-  return (
-    <div className="box">
-    <div className="app">
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-      <p>Don't have an account?</p>
-      <Link to = "/Register">
-        <button className="LoginBtn">Register</button>
-        </Link>
-        
-        {inputs.map((input) => (
-          <FormValue
-          key={input.id} 
-          {...input} 
-          value = {values[input.name]} 
-          onChange={onChange}
-          />
-        ))}
-        <button>Submit</button>
-      </form>
-    </div>
-    </div>
-  );
- };
- export default Login;
+        }).then((response)=>  {
+          console.log(response);
+        });
+  
+      }; 
+    return (  
+          <div className='login'>
+            <div className='card'> 
+                <div className='left'>
+                    <h1>GeoSaviour</h1>
+                    <p>
+                        This is a new website just being constructed so that i can 
+                        visualise connecting database to the page because i need  
+                        to write moore stuff to fill up the space.
+                    </p>
+                    <span>Don't have an account?</span>
+                    <Link to="/register">
+                    <button>Register</button>
+                    </Link>
+                </div>
+                <div className='right'>
+                <h1>Login</h1>
+                <form>
+                   <input type="text" placeholder='Nickname'
+                   onChange={(event) =>{
+                     setNickname(event.target.value)
+                   }} /> 
+                   <input type="password" placeholder='password'
+                   onChange={(event) =>{
+                     setPassword(event.target.value)}} />
+                   <button type="button" onClick={login}>Login</button>
+                </form>
+                </div>
+            </div>
+          </div>
+    );
+};
+ 
+export default Login;
