@@ -51,9 +51,9 @@ function Register() {
                 <div className='left'>
                     <h1>GeoSaviour</h1>
                     <p>
-                        This is a new website just being constructed so that i can 
-                        visualise connecting database to the page because i need  
-                        to write moore stuff to fill up the space.
+                        This is the register page where you can make an account. 
+                        Please enter the credentials required to create a new account.
+                        This data will be stored.
                     </p>
                     <span>Already got an account</span>
                     <Link to="/login">

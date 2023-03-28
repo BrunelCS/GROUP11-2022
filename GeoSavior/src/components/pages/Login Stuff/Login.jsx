@@ -25,9 +25,7 @@ function Login(){
                 <div className='left'>
                     <h1>GeoSaviour</h1>
                     <p>
-                        This is a new website just being constructed so that i can 
-                        visualise connecting database to the page because i need  
-                        to write moore stuff to fill up the space.
+                    This is the login page for the website.
                     </p>
                     <span>Don't have an account?</span>
                     <Link to="/register">
