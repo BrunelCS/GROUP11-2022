@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Axios from 'axios';
 import './login.scss'
+//imports are used so that you can use specific packages that have been installed 
+
 function Login(){
 
     const [nickname,setNickname] = useState("")
     const [password,setPassword] = useState("")  
+    //UseState functions used so variables values can be changed due to the input the uer enters
 
  
    
@@ -13,9 +16,10 @@ function Login(){
         Axios.post('http://localhost:3002/login', {
           nickname: nickname,
           password: password,
-  
+    //These are the variables that the frontend login page is sending to the backend
         }).then((response)=>  {
           console.log(response);
+          //this test that the right values are sent back
         });
   
       }; 
@@ -38,7 +42,9 @@ function Login(){
                    <input type="text" placeholder='Nickname'
                    onChange={(event) =>{
                      setNickname(event.target.value)
+                     //onChange events sends a value that the user entered to the variable setNickname
                    }} /> 
+                   
                    <input type="password" placeholder='password'
                    onChange={(event) =>{
                      setPassword(event.target.value)}} />

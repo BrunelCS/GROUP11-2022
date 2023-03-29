@@ -1,6 +1,8 @@
+//scss files are more advanced and can be used similar to nesting using nesting slelctors
 .login{
     height: 100vh;
     background-image:url("./banner.jpg");
+    //adds a imaghe to the background of the application 
     display: flex;
     align-items: center;
     justify-content: center;
