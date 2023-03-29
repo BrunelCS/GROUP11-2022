@@ -4,6 +4,8 @@ import Axios from 'axios';
 import './register.scss';
 //import validation from './Validation';
 
+//these imports allow me to use specific packages feature
+
 function Register() {
 
         /*const [values,setValues] =useState({
@@ -30,6 +32,8 @@ function Register() {
     const [lastNameReg,setLastNameReg] = useState("")
     const [passwordReg,setPasswordReg] = useState("")
 
+    //declaring usestates statements so it can take input from the input fields 
+
     const addUser = () => {
       Axios.post('http://localhost:3002/create', {
         nickname: nicknameReg,
@@ -37,12 +41,12 @@ function Register() {
         firstName: firstNameReg,
         lastName:lastNameReg,
         password: passwordReg,
-
+    //this makes it so it can connect to the backend server and send the data to the right place using axios 
 
       }).then(()=>  {
         console.log("success");
       });
-
+      //if correct data is sent the message success comes up 
     }; 
     
     return (  
@@ -91,6 +95,7 @@ function Register() {
                    }}/>
                    
                    <button onClick={addUser}>Register</button>
+                   
                 </form>
                 </div>
             </div>
