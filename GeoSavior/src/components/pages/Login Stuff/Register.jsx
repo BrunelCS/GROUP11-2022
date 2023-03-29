@@ -26,6 +26,10 @@ function Register() {
             e.preventDefault();
             setError(validation(values));
            }*/
+
+
+    // found it difficult to use two onchange events with one input field 
+    // so created another login page that did the error handling
     const [nicknameReg,setNicknameReg] = useState("")
     const [emailReg,setEmailReg] = useState("")  
     const [firstNameReg,setFirstNameReg] = useState("")
