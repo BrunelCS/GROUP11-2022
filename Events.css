@@ -27,6 +27,22 @@
     font-weight: bold;
 }
 
+.searchbar {
+    padding: 10px;
+    width: 90%;
+    font-size: 90%;
+    margin-bottom: 1%;
+}
+
+.searchbutton {
+    padding: 10px;
+    background-color: #4C7972;
+    border-radius: 5px;
+    transform: translate(10%, -1%);
+    width: 7%;
+    font-size: 90%;
+}
+
 .contBodyLeft {
     background-color: #4C7972;
     width: 50%;
@@ -76,7 +92,7 @@ img {
 #date {
     text-align: center;
     font-family: monospace;
-    font-size: 400%;
+    font-size: 200%;
     transform: translateY(-25px);
 }
 
@@ -97,7 +113,7 @@ img {
     transition: 0.3s;
     border-radius: 5px;
     font-family: monospace;
-    font-size: 200%;
+    font-size: 350%;
     padding: 20%;
     cursor: pointer;
 }
