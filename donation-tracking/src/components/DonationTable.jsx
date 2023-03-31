@@ -1,69 +1,83 @@
-import React, { useState } from 'react'
-import MockData from '../MOCK_DATA.json'
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import './DonationTable.css'
+import React, { useState, useEffect } from 'react';
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import './DonationTable.css';
+import axios from 'axios';
 
 export default function DonationTable() {
-    const [data, setdata] = useState(MockData)
-    const [ordername, setordername] = useState("ASC")
-    const [orderamount, setorderamount] = useState("ASC")
-    const [orderdate, setorderdate] = useState("ASC")
-    const [searchQuery, setSearchQuery] = useState("");
+  const [dt, setdt] = useState([]);
+  const [ordername, setordername] = useState('ASC');
+  const [orderamount, setorderamount] = useState('ASC');
+  const [orderdate, setorderdate] = useState('ASC');
+  const [searchQuery, setSearchQuery] = useState('');
 
-    const sortingName =(col)=>{
-        if (ordername === "ASC"){
-            const sorted = [...data].sort((a,b)=>
-                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
-            );
-            setdata(sorted);
-            setordername("DSC");
-        } if (ordername === "DSC"){
-            const sorted = [...data].sort((a,b)=>
-                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
-            );
-            setdata(sorted);
-            setordername("ASC");
-        }
+  useEffect(() => {
+    axios.get('http://localhost:3002/dt')
+      .then((response) => {
+        console.log(response.data);
+        setdt(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const sortingName = (col) => {
+    if (ordername === 'ASC') {
+      const sorted = [...dt].sort((a, b) =>
+        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+      );
+      setdt(sorted);
+      setordername('DSC');
     }
-    const sortingAmount =(col)=>{
-        if (orderamount === "ASC") {
-            const sorted = [...data].sort((a, b) => {
-                const moneyA = parseFloat(a[col].replace("£", ""));
-                const moneyB = parseFloat(b[col].replace("£", ""));
-                return moneyA - moneyB;
-              });
-            setdata(sorted);
-            setorderamount("DSC");
-        } if (orderamount === "DSC") {
-            const sorted = [...data].sort((a, b) => {
-                const moneyA = parseFloat(a[col].replace("£", ""));
-                const moneyB = parseFloat(b[col].replace("£", ""));
-                return moneyB - moneyA;
-              });
-            setdata(sorted);
-            setorderamount("ASC");
-        }
+    if (ordername === 'DSC') {
+      const sorted = [...dt].sort((a, b) =>
+        a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+      );
+      setdt(sorted);
+      setordername('ASC');
     }
-    const sortingDate =(col)=>{
-        if (orderdate === "ASC") {
-            const sorted = [...data].sort((a, b) => {
-                const dateA = new Date(a[col].split("/").reverse().join("-"));
-                const dateB = new Date(b[col].split("/").reverse().join("-"));
-                return dateA - dateB;
-              });
-            setdata(sorted);
-            setorderdate("DSC");
-        } if (orderdate === "DSC") {
-            const sorted = [...data].sort((a, b) => {
-                const dateA = new Date(a[col].split("/").reverse().join("-"));
-                const dateB = new Date(b[col].split("/").reverse().join("-"));
-                return dateB - dateA;
-              });
-            setdata(sorted);
-            setorderdate("ASC");
-            
-        }
+  };
+  const sortingAmount = (col) => {
+    if (orderamount === 'ASC') {
+      const sorted = [...dt].sort((a, b) => {
+        const moneyA = typeof a[col] === 'string' ? parseFloat(a[col].replace("£", "")) : a[col];
+        const moneyB = typeof b[col] === 'string' ? parseFloat(b[col].replace("£", "")) : b[col];
+        return moneyA - moneyB;
+      });
+      setdt(sorted);
+      setorderamount('DSC');
     }
+    if (orderamount === 'DSC') {
+      const sorted = [...dt].sort((a, b) => {
+        const moneyA = typeof a[col] === 'string' ? parseFloat(a[col].replace("£", "")) : a[col];
+        const moneyB = typeof b[col] === 'string' ? parseFloat(b[col].replace("£", "")) : b[col];
+        return moneyB - moneyA;
+      });
+      setdt(sorted);
+      setorderamount('ASC');
+    }
+  };
+  const sortingDate = (col) => {
+    if (orderdate === 'ASC') {
+      const sorted = [...dt].sort((a, b) => {
+        const dateA = new Date(a[col]);
+        const dateB = new Date(b[col]);
+        return dateA - dateB;
+      });
+      setdt(sorted);
+      setorderdate('DSC');
+    }
+    if (orderdate === 'DSC') {
+      const sorted = [...dt].sort((a, b) => {
+        const dateA = new Date(a[col]);
+        const dateB = new Date(b[col]);
+        return dateB - dateA;
+      });
+      setdt(sorted);
+      setorderdate('ASC');
+    }
+  };
+  
   return (
 
     <div className='container'>
@@ -79,26 +93,28 @@ export default function DonationTable() {
     
         <table className="table table-bordered">
             <thead>
+                <tr>
                <th onClick={()=>sortingDate("date")}>Date {orderdate === "ASC" ? <FaArrowDown /> : <FaArrowUp />} </th>
                <th onClick={()=>sortingName("name")}>Name {ordername === "ASC" ? <FaArrowDown /> : <FaArrowUp />}</th>
                <th onClick={()=>sortingAmount("amount")}>Amount {orderamount === "ASC" ? <FaArrowDown /> : <FaArrowUp />}</th>      
+               </tr>            
             </thead>
             <tbody>
-            {data.filter((d) => {
-                return (
-                d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                d.amount.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                d.date.toLowerCase().includes(searchQuery.toLowerCase())
-                );
-            })
-
-            .map((d) => (
-                <tr key={d.id}>
-                    <td>{d.date}</td>
-                    <td>{d.name}</td>
-                    <td>{d.amount}</td>
-                </tr>
-            ))}
+            {dt.filter((d) => {
+    const amount = parseFloat(d.amount);
+    const searchValue = parseFloat(searchQuery);
+    return (
+        d.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (!isNaN(amount) && !isNaN(searchValue) && amount.toString().includes(searchQuery))
+    );
+       }).map((d) => (
+    <tr key={d.id}>
+     <td>{new Date(d.date).toISOString().substring(0, 10)}</td>
+     <td>{d.name}</td>
+     <td>£{parseFloat(d.amount).toFixed(2)}</td> 
+    </tr>
+       ))}
             </tbody>
         </table>
         
